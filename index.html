@@ -223,5 +223,90 @@
 
     </div>
 </main>
+    <section id="reservasi" class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card p-4">
+                <h2 class="judul text-center mb-4">Reservasi Meja</h2>
+
+                <form id="formReservasi">
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" id="nama" class="form-control"
+                               placeholder="Masukkan nama" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tanggal" class="form-label">Tanggal Reservasi</label>
+                        <input type="date" id="tanggal" class="form-control"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="jumlah" class="form-label">Jumlah Orang</label>
+                        <input type="number" id="jumlah" class="form-control"
+                               min="1" placeholder="Contoh: 4" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-cafe w-100">
+                        Kirim Reservasi
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="modal fade" id="modalBerhasil" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reservasi Berhasil</h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body" id="pesanKonfirmasi">
+                Reservasi berhasil dikirim.
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cafe"
+                        data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer id="kontak" class="text-center p-4">
+    <h5>Kopi Senja Cafe</h5>
+    <p class="mb-1">Jam Operasional: Setiap hari, 09.00–22.00 WIB</p>
+    <p class="mb-1">Kontak: 08xx-xxxx-xxxx</p>
+    <p class="mb-0">&copy; 2026 Kopi Senja Cafe. Hak cipta dilindungi.</p>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const form = document.getElementById("formReservasi");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const nama = document.getElementById("nama").value;
+        const tanggal = document.getElementById("tanggal").value;
+        const jumlah = document.getElementById("jumlah").value;
+
+        document.getElementById("pesanKonfirmasi").textContent =
+            "Terima kasih, " + nama +
+            "! Reservasi untuk " + jumlah +
+            " orang pada tanggal " + tanggal +
+            " berhasil dikonfirmasi.";
+
+        const modal = new bootstrap.Modal(
+            document.getElementById("modalBerhasil")
+        );
+
+        modal.show();
+        form.reset();
+    });
+</script>
 </body>
-<html/>
+</html>html>
